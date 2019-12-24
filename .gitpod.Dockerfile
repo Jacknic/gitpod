@@ -13,5 +13,3 @@ RUN mkdir -p ${ANDROID_HOME} && \
     curl --silent --show-error --location --fail --retry 3 --output ${sdk_version} https://dl.google.com/android/repository/${sdk_version} && \
     unzip -q ${sdk_version} -d ${ANDROID_HOME} && \
     rm ${sdk_version}
-
-RUN yes | sdkmanager --licenses && yes | sdkmanager --update

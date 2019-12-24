@@ -2,3 +2,5 @@ image:
     file: .gitpod.Dockerfile
 checkoutLocation: "gitpod"
 workspaceLocation: "ws"
+tasks:
+    - init: yes | sdkmanager --licenses && yes | sdkmanager --update
