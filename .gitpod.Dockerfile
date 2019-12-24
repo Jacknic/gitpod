@@ -2,8 +2,6 @@ FROM gitpod/workspace-full
 
 USER gitpod
 
-RUN yes | sdk install java 8.0.232-amzn 
-
 # 参考 CircleCI-Public/example-images  https://github.com/CircleCI-Public/example-images/blob/master/android/Dockerfile
 ARG sdk_version=sdk-tools-linux-4333796.zip
 # 设置环境变量
