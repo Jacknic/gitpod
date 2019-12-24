@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 
 USER gitpod
 
-RUN sdk install java 8.0.232-amzn 
+RUN yes | sdk install java 8.0.232-amzn 
 
 # 参考 CircleCI-Public/example-images  https://github.com/CircleCI-Public/example-images/blob/master/android/Dockerfile
 ARG sdk_version=sdk-tools-linux-4333796.zip
