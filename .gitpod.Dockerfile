@@ -1,5 +1,7 @@
 FROM gitpod/workspace-full-vnc
 
+USER root
+
 # Install the latest rr.
 RUN __RR_VERSION__="5.3.0" \
  && cd /tmp \
@@ -49,3 +51,5 @@ RUN git clone https://github.com/mystor/phlay/ $HOME/.phlay \
 RUN git clone https://github.com/mozilla-conduit/review/ $HOME/.moz-phab \
  && echo "\n# Add moz-phab to the PATH." >> $HOME/.bashrc \
  && echo "PATH=\"\$PATH:$HOME/.moz-phab\"" >> $HOME/.bashrc
+
+ USER root
