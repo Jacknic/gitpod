@@ -12,6 +12,6 @@ USER gitpod
 RUN mkdir -p ${ANDROID_HOME} && \
     wget -qO ${ANDROID_SDK_VERSION} https://dl.google.com/android/repository/${ANDROID_SDK_VERSION} && \
     unzip -q ${ANDROID_SDK_VERSION} -d ${ANDROID_HOME} && \
-    rm ${SDK_VERSION}
+    rm ${ANDROID_SDK_VERSION}
 
 USER root
