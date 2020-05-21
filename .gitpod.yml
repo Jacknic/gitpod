@@ -1,8 +1,11 @@
 image:
     file: .gitpod.Dockerfile
+
 checkoutLocation: "~/config/gitpod"
 workspaceLocation: "ws"
+
 tasks:
-    - init: echo 'y' | sdk i java 8.0.252-amzn
-      command: echo 'y' | sdkmanager --licenses
-      command: echo 'y' | sdkmanager --update
+    - init: |
+        echo 'y' | sdk i java 8.0.252-amzn
+        echo 'y' | sdkmanager --licenses
+        echo 'y' | sdkmanager --update
