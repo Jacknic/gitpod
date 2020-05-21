@@ -1,8 +1,8 @@
 image:
     file: .gitpod.Dockerfile
-checkoutLocation: ".gitpod/config/gitpod"
-workspaceLocation: "."
+checkoutLocation: "~/config/gitpod"
+workspaceLocation: "ws"
 tasks:
-    - init: yes | sdk i java 8.0.232-amzn
-      command: yes | sdkmanager --licenses
-      command: yes | sdkmanager --update
+    - init: echo 'y' | sdk i java 8.0.252-amzn
+      command: echo 'y' | sdkmanager --licenses
+      command: echo 'y' | sdkmanager --update
