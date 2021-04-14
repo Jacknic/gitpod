@@ -20,5 +20,3 @@ RUN apt clean -qq
 USER gitpod
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
-
-RUN yes | sdk install java 8.0.265-open
