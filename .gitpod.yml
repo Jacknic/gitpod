@@ -7,5 +7,4 @@ tasks:
         yes | sdkmanager --licenses
         yes | sdkmanager --update
 
-checkoutLocation: ".gitpod"
-workspaceLocation: "/workspace"
+workspaceLocation: "ide/"
