@@ -1,12 +1,25 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-full-vnc
+# https://gist.github.com/pranavavva/a759b5da8bb9323ab5cb7ffd5e0bdc49
+USER gitpod
 
-ENV ANDROID_HOME=/home/gitpod/android-sdk-linux \
-    ANDROID_SDK_TOOLS="sdk-tools-linux-4333796.zip" \
-    ANDROID_SDK_ROOT=$ANDROID_HOME \
-    PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$PATH
+ENV ANDROID_HOME /opt/android-sdk-linux
+
+USER root
+
+RUN apt update -qq && apt install zip unzip
+
+RUN cd /opt && \
+    wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
+    unzip -q *.zip -d ${ANDROID_HOME} && \
+    rm *.zip
+
+RUN chmod -R 777 ${ANDROID_HOME}
+
+RUN apt clean -qq
 
 USER gitpod
 
-RUN cd /home/gitpod && \
-    wget https://dl.google.com/android/repository/${ANDROID_SDK_TOOLS} -O ${ANDROID_SDK_TOOLS}  && \
-    unzip ${ANDROID_SDK_TOOLS} -d ${ANDROID_HOME} && rm ${ANDROID_SDK_TOOLS}
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+
+RUN bash -c "source ~/.sdkman/bin/sdkman-init.sh && \
+                sdk install java 8.0.232-open"
