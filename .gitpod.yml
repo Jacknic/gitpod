@@ -6,5 +6,3 @@ tasks:
         echo 'y' | sdk i java 8.0.282-open
         yes | sdkmanager --licenses
         yes | sdkmanager --update
-
-workspaceLocation: "ide/"
