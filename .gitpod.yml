@@ -1,7 +1,8 @@
 image:
     file: .gitpod.Dockerfile
 
-checkoutLocation: "~/gpconfig"
+checkoutLocation: ".gpconfig"
+workspaceLocation: "."
 
 tasks:
     - command: |
