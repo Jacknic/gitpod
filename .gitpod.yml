@@ -8,4 +8,4 @@ tasks:
         yes | sdkmanager --update
 
 checkoutLocation: ".gitpod"
-workspaceLocation: "../"
+workspaceLocation: "/workspace"
