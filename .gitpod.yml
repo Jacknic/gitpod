@@ -1,11 +1,13 @@
 image:
     file: .gitpod.Dockerfile
 
-checkoutLocation: ".gpconfig"
-workspaceLocation: "."
-
 tasks:
+    - init: |
+        mkdir ws
     - command: |
         echo 'y' | sdk i java 8.0.282-open
         yes | sdkmanager --licenses
         yes | sdkmanager --update
+
+checkoutLocation: ".gitpod"
+workspaceLocation: "ws"
