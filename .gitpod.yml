@@ -8,4 +8,8 @@ tasks:
         echo 'y' | sdk i java 8.0.282-open
         yes | sdkmanager --licenses
         yes | sdkmanager --update
-        rm gitpod/ws/.nothing
+        pwd
+
+    - name: remove .nothing
+      init: |
+        rm ws/.nothing
