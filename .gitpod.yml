@@ -2,3 +2,6 @@ image:
     file: .gitpod.Dockerfile
 checkoutLocation: "gitpod"
 workspaceLocation: "ws"
+tasks:
+  - name: make dir
+    command: mkdir ws
