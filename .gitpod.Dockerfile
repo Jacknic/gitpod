@@ -3,6 +3,7 @@ FROM gitpod/workspace-full-vnc
 USER gitpod
 
 ENV ANDROID_HOME /opt/android-sdk-linux
+RUN mkdir /workspace/ws
 
 USER root
 

@@ -1,15 +1,10 @@
 image:
     file: .gitpod.Dockerfile
 
-workspaceLocation: "gitpod/ws"
+workspaceLocation: "ws"
 
 tasks:
     - command: |
         echo 'y' | sdk i java 8.0.282-open
         yes | sdkmanager --licenses
         yes | sdkmanager --update
-        pwd
-
-    - name: remove .nothing
-      init: |
-        rm ws/.nothing
