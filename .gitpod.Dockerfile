@@ -3,7 +3,6 @@ FROM gitpod/workspace-full-vnc
 USER gitpod
 
 ENV ANDROID_HOME /opt/android-sdk-linux
-RUN mkdir /workspace/ws
 
 USER root
 
@@ -18,6 +17,9 @@ RUN chmod -R 777 ${ANDROID_HOME}
 
 RUN apt clean -qq
 
+RUN mkdir -p /workspace/ws
+
 USER gitpod
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+
