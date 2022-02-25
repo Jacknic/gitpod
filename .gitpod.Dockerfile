@@ -9,7 +9,7 @@ USER root
 RUN apt update -qq && apt install zip unzip
 
 RUN cd /opt && \
-    wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
+    wget https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip && \
     unzip -q *.zip -d ${ANDROID_HOME} && \
     rm *.zip
 
@@ -21,5 +21,5 @@ RUN mkdir -p /workspace/ws
 
 USER gitpod
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${ANDROID_HOME}/cmdline-tools/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
