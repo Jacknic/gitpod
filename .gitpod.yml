@@ -1,5 +1,5 @@
 image:
     file: .gitpod.Dockerfile
-
 workspaceLocation: "ws"
-
+tasks:
+  - before: sudo mount -t tmpfs shm -osize=4096m /dev/shm

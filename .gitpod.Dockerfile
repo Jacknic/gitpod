@@ -1,25 +1,27 @@
 FROM gitpod/workspace-full-vnc
-# https://gist.github.com/pranavavva/a759b5da8bb9323ab5cb7ffd5e0bdc49
-USER gitpod
+SHELL ["/bin/bash", "-c"]
 
-ENV ANDROID_HOME /opt/android-sdk-linux
+ENV ANDROID_HOME=/home/gitpod/androidsdk
 
+# Install Open JDK
 USER root
+RUN apt update \
+    && apt install openjdk-8-jdk -y \
+    && update-java-alternatives --set java-1.8.0-openjdk-amd64
 
-RUN apt update -qq && apt install zip unzip
-
-RUN cd /opt && \
-    wget https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip && \
-    unzip -q *.zip -d ${ANDROID_HOME} && \
-    rm *.zip
-
-RUN chmod -R 777 ${ANDROID_HOME}
-
-RUN apt clean -qq
-
-RUN mkdir -p /workspace/ws
-
+# Install SDK Manager
 USER gitpod
+RUN  wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip \
+    && mkdir -p $ANDROID_HOME/cmdline-tools/latest \
+    && unzip commandlinetools-linux-*.zip -d $ANDROID_HOME \
+    && rm -f commandlinetools-linux-*.zip \
+    && mv $ANDROID_HOME/cmdline-tools/bin $ANDROID_HOME/cmdline-tools/latest \
+    && mv $ANDROID_HOME/cmdline-tools/lib $ANDROID_HOME/cmdline-tools/latest
 
-ENV PATH ${PATH}:${ANDROID_HOME}/cmdline-tools/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+RUN echo "export ANDROID_HOME=$ANDROID_HOME" >> /home/gitpod/.bashrc \
+    && echo 'export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/platform-tools:$PATH' >> /home/gitpod/.bashrc
+
+# Install Android SDK
+USER gitpod
+RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30"
 
